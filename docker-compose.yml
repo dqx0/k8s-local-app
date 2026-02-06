@@ -1,0 +1,37 @@
+services:
+  gateway:
+    image: caddy:2.10-alpine
+    container_name: dqx0-gateway
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - hello
+      - app
+      - api
+
+  hello:
+    image: nginxdemos/hello:plain-text
+    container_name: dqx0-hello
+    restart: unless-stopped
+
+  app:
+    build:
+      context: ./app
+    container_name: dqx0-app
+    restart: unless-stopped
+
+  api:
+    build:
+      context: ./api
+    container_name: dqx0-api
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:

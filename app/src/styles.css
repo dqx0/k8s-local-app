@@ -1,0 +1,33 @@
+:root {
+  color-scheme: light;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f2f5f9;
+  color: #172033;
+}
+
+main {
+  width: min(760px, 90vw);
+  background: #fff;
+  border: 1px solid #dde5ef;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+pre {
+  background: #111827;
+  color: #e5e7eb;
+  padding: 12px;
+  border-radius: 8px;
+  overflow: auto;
+}

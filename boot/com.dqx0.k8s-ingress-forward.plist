@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.dqx0.k8s-ingress-forward</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/sh</string>
+    <string>/Users/dqx0/dqx0-sites/boot/start-k8s-ingress-forward.sh</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>StandardOutPath</key>
+  <string>/tmp/com.dqx0.k8s-ingress-forward.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/com.dqx0.k8s-ingress-forward.err.log</string>
+</dict>
+</plist>

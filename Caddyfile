@@ -1,0 +1,14 @@
+hello.dqx0 {
+  tls internal
+  reverse_proxy hello:80
+}
+
+app.dqx0 {
+  tls internal
+  reverse_proxy app:80
+}
+
+api.dqx0 {
+  tls internal
+  reverse_proxy api:8080
+}
