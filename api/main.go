@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"log"
+	"math/rand/v2"
 	"net/http"
 	"os"
 	"time"
@@ -11,6 +12,12 @@ import (
 type apiResponse struct {
 	Service   string `json:"service"`
 	Status    string `json:"status"`
+	Hostname  string `json:"hostname"`
+	Timestamp string `json:"timestamp"`
+}
+
+type diceResponse struct {
+	Value     int    `json:"value"`
 	Hostname  string `json:"hostname"`
 	Timestamp string `json:"timestamp"`
 }
@@ -25,6 +32,15 @@ func main() {
 		if r.URL.Path == "/health" {
 			w.Header().Set("Content-Type", "application/json")
 			_ = json.NewEncoder(w).Encode(map[string]string{"status": "healthy"})
+			return
+		}
+		if r.URL.Path == "/dice" {
+			w.Header().Set("Content-Type", "application/json")
+			_ = json.NewEncoder(w).Encode(diceResponse{
+				Value:     rand.IntN(6) + 1,
+				Hostname:  hostname(),
+				Timestamp: time.Now().UTC().Format(time.RFC3339Nano),
+			})
 			return
 		}
 		w.Header().Set("Content-Type", "application/json")
